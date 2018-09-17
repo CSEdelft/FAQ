@@ -25,6 +25,6 @@
 
  <div>
 
- <embed src="http://syscalls.kernelgrok.com/" style="width:100%;height:300px">
+ <iframe src="http://syscalls.kernelgrok.com/" style="width:100%;height:300px"></iframe>
 
  </div>
