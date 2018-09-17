@@ -22,6 +22,26 @@
 |r14             | r14d          | r14w          | r14b 			|
 |r15             | r15d          | r15w          | r15b 			|
 
+registers work like this, meaning every row in the above table is actually the same register but parts of it as shown below:
+
+<table class="registers">
+<tbody><tr align="center">
+<td width="200">
+</td><td width="50">
+</td><td width="50">
+</td><td width="50">%ah<br>8 bits
+</td><td width="50">%al<br>8 bits
+</td></tr><tr align="center">
+<td>
+</td><td>
+</td><td>
+</td><td colspan="2">%ax<br>16 bits
+</td></tr><tr align="center">
+<td>
+</td><td colspan="4">%eax<br>32 bits
+</td></tr><tr align="center">
+<td colspan="5">%rax<br>64 bits
+</td></tr></tbody></table>
 
 [reference of linux syscalls](http://syscalls.kernelgrok.com/)
 [quick assembly cheatsheet](https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
@@ -90,26 +110,7 @@ to destroy it again use
 
 ```
 
-registers:
 
-<table class="registers">
-<tbody><tr align="center">
-<td width="200">
-</td><td width="50">
-</td><td width="50">
-</td><td width="50">%r8h<br>8 bits
-</td><td width="50">%r8l<br>8 bits
-</td></tr><tr align="center">
-<td>
-</td><td>
-</td><td>
-</td><td colspan="2">%r8w<br>16 bits
-</td></tr><tr align="center">
-<td>
-</td><td colspan="4">%r8d<br>32 bits
-</td></tr><tr align="center">
-<td colspan="5">%r8<br>64 bits
-</td></tr></tbody></table>
 
 adressing modes:
 
