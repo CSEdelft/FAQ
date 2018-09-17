@@ -40,6 +40,7 @@
 | imulq | src | rdx:rax = rax * src | multiplies rax by src (SIGNED) |
 | divq | src | rdx:rax = rax / src | divides rax by src (SIGNED) |
 | idivq | src | rdx:rax = rax / src | divides rax by src (SIGNED) |
+| --- | --- | --- | --- |
 | jmp | label | | jumps to label (unconditional) |
 | je | label | | jumps to label (if equal) |
 | jne | label | | jumps to label (if not equal) |
@@ -50,6 +51,7 @@
 | call | label | push <current adress + 1>, jmp label | calls a function |
 | ret | | jmp (%rsp) | returns to caller |
 | loop | label | dec %rcx, jnz label |
+| --- | --- | --- | --- |
 | cmp | A,B |  A - B (answer not stored but flags set) | compares 2 numbers. jump instruction follows |
 | xor | src,dst | src = src xor dst | bitwise xor |
 | or | src,dst | src = src and dst | bitwise and |
