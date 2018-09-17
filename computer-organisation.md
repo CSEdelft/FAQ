@@ -60,3 +60,65 @@
 | shr | A,dst | src = src >> A | shift right |
 | lea | A, dst | dst = &A | load effective adress (& means adress of) |
 | int | int_no | | software interrupt (see linux system calls above, used together with int 0x80) |
+
+
+
+generally, to initialize a stackframe use 
+```assembly
+	push %ebp
+	movl %esp, %ebp #sets up a stackframe
+
+	push %ebx #preserve registers
+	push %r12d
+	push %r13d
+	push %r14d
+	push %r15d
+```
+
+to destroy it again use 
+
+```assembly
+	pop %r15d #reload registers
+	pop %r14d
+	pop %r13d
+	pop %r12d
+	pop %ebx
+	
+	pop %ebp #destroy frame
+	ret #return
+
+```
+
+registers:
+
+<table class="registers">
+<tbody><tr align="center">
+<td width="200">
+</td><td width="50">
+</td><td width="50">
+</td><td width="50">%r8h<br>8 bits
+</td><td width="50">%r8l<br>8 bits
+</td></tr><tr align="center">
+<td>
+</td><td>
+</td><td>
+</td><td colspan="2">%r8w<br>16 bits
+</td></tr><tr align="center">
+<td>
+</td><td colspan="4">%r8d<br>32 bits
+</td></tr><tr align="center">
+<td colspan="5">%r8<br>64 bits
+</td></tr></tbody></table>
+
+adressing modes:
+
+|example | name | description
+| --- | --- | --- |
+|movq $label,%rax | immediate (pointer) | loads the location of the label into rax | 
+|movq label,%rax | immediate | loads the quadword at the location of the label into rax | 
+|movq (%rbx),%rax | inderect | loads the quadword at the location pointed to by rbx into rax | 
+|movq 8(%rbx),%rax | inderect offset (positive) | loads the quadword 8 after the location pointed to by rbx into rax | 
+|movq -8(%rbx),%rax | inderect offset (negative) | loads the quadword 8 before the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx),%rax | inderect variable offset | loads the quadword at %rcx after the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
