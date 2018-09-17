@@ -1,7 +1,7 @@
 
 
 
-[register names:](https:#docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
+[register names:](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
 
 |64-bit register | Lower 32 bits | Lower 16 bits | Lower 8 bits		|
 | -------------- | ------------- | ------------- | ---------------- |
