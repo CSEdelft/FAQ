@@ -124,3 +124,6 @@ adressing modes:
 |movq (%rbx,%rcx),%rax | inderect variable offset | loads the quadword at %rcx after the location pointed to by rbx into rax | 
 |movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
 |movq 8(%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
+
+
+https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html
