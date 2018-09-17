@@ -1,7 +1,7 @@
 
 
 
-[register names:](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
+[register names:](https:#docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
 
 |64-bit register | Lower 32 bits | Lower 16 bits | Lower 8 bits		|
 | -------------- | ------------- | ------------- | ---------------- |
@@ -24,7 +24,8 @@
 
 
 [reference of linux syscalls](http://syscalls.kernelgrok.com/)
-[quick assembly cheatsheet](https://www.cs.uaf.edu/2005/fall/cs301/support/x86/index.html)
+[quick assembly cheatsheet](https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
+[quick assembly cheatsheet 2](https://www.cs.uaf.edu/2005/fall/cs301/support/x86/index.html)
 
 | opcode | operands | function | description |
 | --- | --- | --- | --- |
@@ -121,4 +122,4 @@ adressing modes:
 |movq -8(%rbx),%rax | inderect offset (negative) | loads the quadword 8 before the location pointed to by rbx into rax | 
 |movq (%rbx,%rcx),%rax | inderect variable offset | loads the quadword at %rcx after the location pointed to by rbx into rax | 
 |movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
-|movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
