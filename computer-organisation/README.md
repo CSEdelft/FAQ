@@ -65,7 +65,7 @@ registers work like this, meaning every row in the above table is actually the s
 | jmp | label | | jumps to label (unconditional) |
 | je | label | | jumps to label (if equal) |
 | jne | label | | jumps to label (if not equal) |
-| jlg| label | | jumps to label (if greater than) | 
+| jg| label | | jumps to label (if greater than) | 
 | jl | label | | jumps to label (if less than) |
 | jle | label | | jumps to label (if less than or equal) |
 | jge | label | | jumps to label (if greater than or equal) |
