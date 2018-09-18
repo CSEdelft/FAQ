@@ -46,7 +46,7 @@ registers work like this, meaning every row in the above table is actually the s
 [reference of linux syscalls](http://syscalls.kernelgrok.com/)
 [quick assembly cheatsheet](https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
 [quick assembly cheatsheet 2](https://www.cs.uaf.edu/2005/fall/cs301/support/x86/index.html)
-[quick assembly cheatsheet 3(https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
+[quick assembly cheatsheet 3](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
 
 | opcode | operands | function | description |
 | --- | --- | --- | --- |
