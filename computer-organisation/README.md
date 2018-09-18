@@ -54,7 +54,7 @@ registers work like this, meaning every row in the above table is actually the s
 | xchg | A,B | A,B = B,A | switches the contents of A and B |
 | --- | --- | --- | --- |
 | addq | src,dst | dst = dst + src | adds src to dst |
-| sub | src,dst | dst = dst - src | subtracts src from dst |
+| subq | src,dst | dst = dst - src | subtracts src from dst |
 | inc | dst | dst = dst + 1 | adds 1 to dst |
 | dec | dst | dst = dst - 1 | subtracts 1 from dst |
 | mulq | src | rdx:rax = rax * src | multiplies rax by src (UNSIGNED) |
@@ -74,12 +74,12 @@ registers work like this, meaning every row in the above table is actually the s
 | loop | label | dec %rcx, jnz label |
 | --- | --- | --- | --- |
 | cmp | A,B |  A - B (answer not stored but flags set) | compares 2 numbers. jump instruction follows |
-| xor | src,dst | src = src xor dst | bitwise xor |
-| or | src,dst | src = src and dst | bitwise and |
-| and | src,dst | src = src or dst | bitwise and | 
-| shl | A,dst | src = src << A | shift left |
-| shr | A,dst | src = src >> A | shift right |
-| lea | A, dst | dst = &A | load effective adress (& means adress of) |
+| xorq | src,dst | src = src xor dst | bitwise xor |
+| orq | src,dst | src = src and dst | bitwise and |
+| andq | src,dst | src = src or dst | bitwise and | 
+| shlq | A,dst | src = src << A | shift left |
+| shrq | A,dst | src = src >> A | shift right |
+| leaq | A, dst | dst = &A | load effective adress (& means adress of) |
 | int | int_no | | software interrupt (see linux system calls above, used together with int 0x80) |
 
 
