@@ -31,7 +31,7 @@ FAQ For Computer Organisation
 |r14             | r14d          | r14w          | r14b	 	 |
 |r15             | r15d          | r15w          | r15b	 	 |
 
-[Source/More Info](https:#docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
+[Source/More Info](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
 
 
 ### Register Memory Layout
