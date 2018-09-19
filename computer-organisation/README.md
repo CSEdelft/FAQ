@@ -86,28 +86,31 @@ registers work like this, meaning every row in the above table is actually the s
 
 
 generally, to initialize a stackframe use 
+generally, to initialize a stackframe use 
 ```assembly
-	push %ebp
-	movl %esp, %ebp #sets up a stackframe
+	push %rbx #save necessary registers
+	push %r12
+	push %r13
+	push %r14
+	push %r15
 
-	push %ebx #preserve registers
-	push %r12d
-	push %r13d
-	push %r14d
-	push %r15d
+	push %rbp #generate stackframe
+	movq %rsp, %rbp
 ```
 
 to destroy it again use 
 
 ```assembly
-	pop %r15d #reload registers
-	pop %r14d
-	pop %r13d
-	pop %r12d
-	pop %ebx
-	
-	pop %ebp #destroy frame
-	ret #return
+	movq %rbp, %rsp #restore last stackframe
+	pop %rbp
+
+	pop %r15 #restore necessary registers
+	pop %r14	
+	pop %r13	
+	pop %r12	
+	pop %rbx	
+
+	ret
 
 ```
 
