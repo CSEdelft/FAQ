@@ -158,7 +158,7 @@ assembler directives are notes for the assembler which tell it how to do the com
 | .ascii | reserves space for a string of text to be stored, *not* automatically terminated by a 0 (NULL ) | 
 | .skip n | skips n bytes. useful for defining arrays of data. This should normally only be used in the .bss [section](#bss) | 
 
-##sections
+## sections
 
 the 4 sections of an assembly program are
 * [.text](#text)
@@ -171,19 +171,19 @@ note that any part of assembly can be in any section. sections are *just* for op
 
 defining a section is easy. just put a  . plus the name of the section (like .bss or .text) and then everything after that in the file is part of that section. you can make multiple instances of the same section in different parts of your program (for example two .data sections) and the assembler (gcc) will make sure everything is combined into one.
 
-###text
+### text
 
 in .text code is stored. you write your program in this section. make sure you do this for [GDB](#GDB) to work.
 
-###data
+### data
 
 in .data small variables (integers, text) is stored to be used in your program 
 
-###bss
+### bss
 
 in .bss data can also be stored. the difference is that bss data *must* be uninitialized. this is the case because all of the other sections will actually become a part of the executable file, while the bss section is only a 'promise' for the os. when the program runs the space is created in ram by the os. if you define large arrays of data this should be done in bss to keep the executable small
 
-###rodata
+### rodata
 
 rodata should be used (and is optimized for) storing constant data. this section can *only* be read from.
 
@@ -204,7 +204,7 @@ The return values are stored in `RAX` (In case of a 64 bit number) and in `RDX:R
 
 [Source \(x86 Calling Conventions Wikipedia\)](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI)
 
-##gdb
+## gdb
 
 gdb is a debugger which can help find segfaults or find other mistakes in your program. to use it compile it using the *-g* option (put it directly after "gcc") and then instead of running it like ./<programname>, you run it as gdb ./<programname>. this should launch you into a gdb environment. in this environment you can use the following commands:
 
@@ -226,7 +226,7 @@ when using gdb your program *must* be compiled with -g and your code *must* be i
 * [quick assembly cheatsheet 3](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
 
 
-##command line arguments
+## command line arguments
 
 getting command line arguments is easy in assembly. basically it works the same as in c. the main function/label is actually called with 2 arguments in rdi and rsi. rdi is the ammount of arguments, and rsi is a pointer to an array of strings which holds the arguments. you know where the array ends with argc/rdi.
 
