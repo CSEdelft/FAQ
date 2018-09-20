@@ -11,7 +11,8 @@ FAQ For Computer Organisation
 6. [sections](#sections)
 7. [X86 Calling Convention](#x86-calling-convention)
 8. [Handy Links](#handy-links)
-9. [command line arguments](#command-line-arguments)
+9. [gdb](#gdb)
+10. [command line arguments](#command-line-arguments)
 
 ## Registers
 
