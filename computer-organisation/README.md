@@ -140,6 +140,22 @@ And to destroy it again use:
 |movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
 |movq 8(%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
 
+## X86 Calling Convention
+The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. 
+The first six integer or pointer arguments passed in the registers in this order: 
+1. `RDI`
+2. `RSI` 
+3. `RDX`
+4. `RCX` 
+5. `R8`
+6. `R9`
+7. (with sometimes `R10` as a static chain pointer in case of nested functions)
+8. Additional arguments are to be passed on to the stack
+
+The return values are stored in `RAX` (In case of a 64 bit number) and in `RAX` and `RDX` in case of 128 bit numbers.
+
+[Source \(x86 Calling Conventions Wikipedia\)](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI)
+
 ## Handy Links
 * [reference of linux syscalls](http://syscalls.kernelgrok.com/)
 * [quick assembly cheatsheet](https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
