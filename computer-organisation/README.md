@@ -1,53 +1,70 @@
+# Computer Organisation
+FAQ For Computer Organisation
+## Table of contents
+1. [Registers](#registers)
+	1. [Table](#registers-table)
+	2. [Layout](#register-memory-layout)
+2. [Opcode Table](#opcode-table)
+3. [Stackframes](#stackframe)
+4. [Addressing Modes](#addressing-modes)
+5. [Handy Links](#handy-links)
+
+## Registers
+
+### Registers Table
+|64-bit register | Lower 32 bits | Lower 16 bits | Lower 8 bits	 |
+| -------------- | ------------- | ------------- | ------------- |
+|rax             | eax           | ax            | al 		 |
+|rbx             | ebx           | bx            | bpl		 | 
+|rcx             | ecx           | cx            | cl		 |
+|rdx             | edx           | dx            | dl		 |
+|rsi             | esi           | si            | sil	 	 |
+|rdi             | edi           | di            | dil	 	 |
+|rbp             | ebp           | bp            | bpl	 	 |
+|rsp             | esp           | sp            | spl	 	 |
+|r8              | r8d           | r8w           | r8b	 	 |
+|r9              | r9d           | r9w           | r9b	 	 |
+|r10             | r10d          | r10w          | r10b	 	 |
+|r11             | r11d          | r11w          | r11b	 	 |
+|r12             | r12d          | r12w          | r12b	 	 |
+|r13             | r13d          | r13w          | r13b	 	 |
+|r14             | r14d          | r14w          | r14b	 	 |
+|r15             | r15d          | r15w          | r15b	 	 |
+
+[Source/More Info](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
 
 
-
-[register names:](https:#docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
-
-|64-bit register | Lower 32 bits | Lower 16 bits | Lower 8 bits		|
-| -------------- | ------------- | ------------- | ---------------- |
-|rax             | eax           | ax            | al               |
-|rbx             | ebx           | bx            | bpl 				|
-|rcx             | ecx           | cx            | cl 				|
-|rdx             | edx           | dx            | dl 				|
-|rsi             | esi           | si            | sil 				|
-|rdi             | edi           | di            | dil 				|
-|rbp             | ebp           | bp            | bpl				|
-|rsp             | esp           | sp            | spl				|
-|r8              | r8d           | r8w           | r8b 				|
-|r9              | r9d           | r9w           | r9b 				|
-|r10             | r10d          | r10w          | r10b 			|
-|r11             | r11d          | r11w          | r11b 			|
-|r12             | r12d          | r12w          | r12b 			|
-|r13             | r13d          | r13w          | r13b 			|
-|r14             | r14d          | r14w          | r14b 			|
-|r15             | r15d          | r15w          | r15b 			|
-
+### Register Memory Layout
 registers work like this, meaning every row in the above table is actually the same register but parts of it as shown below:
 
 <table class="registers">
-<tbody><tr align="center">
-<td width="200">
-</td><td width="50">
-</td><td width="50">
-</td><td width="50">%ah<br>8 bits
-</td><td width="50">%al<br>8 bits
-</td></tr><tr align="center">
-<td>
-</td><td>
-</td><td>
-</td><td colspan="2">%ax<br>16 bits
-</td></tr><tr align="center">
-<td>
-</td><td colspan="4">%eax<br>32 bits
-</td></tr><tr align="center">
-<td colspan="5">%rax<br>64 bits
-</td></tr></tbody></table>
+	<tbody>
+		<tr align="center">
+			<td width="200"></td>
+			<td width="50"></td>
+			<td width="50"></td>
+			<td width="50"> %ah <br> 8 bits </td>
+			<td width="50">%al<br>8 bits </td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td></td>
+			<td></td>
+			<td colspan="2">%ax<br>16 bits</td>
+		</tr>
+		<tr align="center">
+			<td></td>
+			<td colspan="4">%eax<br>32 bits</td>
+		</tr>
+		<tr align="center">
+			<td colspan="5">%rax<br>64 bits</td>
+		</tr>
+	</tbody>
+</table>
 
-[reference of linux syscalls](http://syscalls.kernelgrok.com/)
-[quick assembly cheatsheet](https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
-[quick assembly cheatsheet 2](https://www.cs.uaf.edu/2005/fall/cs301/support/x86/index.html)
-[quick assembly cheatsheet 3](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
 
+
+## Opcode Table
 | opcode | operands | function | description |
 | --- | --- | --- | --- |
 | mov | src,dst | dst = src | copy |
@@ -83,10 +100,8 @@ registers work like this, meaning every row in the above table is actually the s
 | leaq | A, dst | dst = &A | load effective adress (& means adress of) |
 | int | int_no | | software interrupt (see linux system calls above, used together with int 0x80) |
 
-
-
-generally, to initialize a stackframe use 
-generally, to initialize a stackframe use 
+## Stackframe
+Generally, to initialize a stackframe use:
 ```assembly
 	push %rbx #save necessary registers
 	push %r12
@@ -98,8 +113,7 @@ generally, to initialize a stackframe use
 	movq %rsp, %rbp
 ```
 
-to destroy it again use 
-
+And to destroy it again use:
 ```assembly
 	movq %rbp, %rsp #restore last stackframe
 	pop %rbp
@@ -114,10 +128,7 @@ to destroy it again use
 
 ```
 
-
-
-adressing modes:
-
+## Addressing Modes
 |example | name | description
 | --- | --- | --- |
 |movq $label,%rax | immediate (pointer) | loads the location of the label into rax | 
@@ -129,5 +140,8 @@ adressing modes:
 |movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
 |movq 8(%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
 
-
-https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html
+## Handy Links
+* [reference of linux syscalls](http://syscalls.kernelgrok.com/)
+* [quick assembly cheatsheet](https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
+* [quick assembly cheatsheet 2](https://www.cs.uaf.edu/2005/fall/cs301/support/x86/index.html)
+* [quick assembly cheatsheet 3](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
