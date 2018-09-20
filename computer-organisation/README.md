@@ -7,7 +7,8 @@ FAQ For Computer Organisation
 2. [Opcode Table](#opcode-table)
 3. [Stackframes](#stackframe)
 4. [Addressing Modes](#addressing-modes)
-5. [Handy Links](#handy-links)
+5. [X86 Calling Convention](#x86-calling-convention)
+6. [Handy Links](#handy-links)
 
 ## Registers
 
