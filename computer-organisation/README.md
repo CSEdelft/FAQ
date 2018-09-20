@@ -152,7 +152,7 @@ The first six integer or pointer arguments passed in the registers in this order
 7. (with sometimes `R10` as a static chain pointer in case of nested functions)
 8. Additional arguments are to be passed on to the stack
 
-The return values are stored in `RAX` (In case of a 64 bit number) and in `RAX` and `RDX` in case of 128 bit numbers.
+The return values are stored in `RAX` (In case of a 64 bit number) and in `RDX:RAX` (MSB:LSB) in case of 128 bit numbers.
 
 [Source \(x86 Calling Conventions Wikipedia\)](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI)
 
