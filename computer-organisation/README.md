@@ -210,7 +210,7 @@ The return values are stored in `RAX` (In case of a 64 bit number) and in `RDX:R
 gdb is a debugger which can help find segfaults or find other mistakes in your program. to use it compile it using the *-g* option (put it directly after "gcc") and then instead of running it like ./<programname>, you run it as gdb ./<programname>. this should launch you into a gdb environment. in this environment you can use the following commands:
 
 * b n (or breakpoint). this sets a breakpoint on line n
-* print <code>. this prints whatever you specify in <code>. this can be a full c expression, or a register name (e.g. $rdi or $rax)
+* print code. this prints whatever you specify in code. this can be a full c expression, or a register name (e.g. $rdi or $rax)
 * x/nx p print n 32 bit words after p. p can be an adress or register. this is useful for reading whats on the stack (e.g. x/10x $rbp)
 * n (or next) steps ahead one instruction. when it finds a function call it will not step into instructions inside this function. useful to skip large functions like c stdlib function like printf
 * s (or step) steps ahead one instruction. this one does go into large functions
