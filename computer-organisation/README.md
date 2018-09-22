@@ -205,6 +205,9 @@ The return values are stored in `RAX` (In case of a 64 bit number) and in `RDX:R
 
 [Source \(x86 Calling Conventions Wikipedia\)](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI)
 
+An illustration of how C functions are called in respect to the x86_64 SysV calling convention:
+![args](https://user-images.githubusercontent.com/10385659/45920669-305d3c80-bea8-11e8-932f-f198d48c4e2d.jpg)
+
 ## gdb
 
 gdb is a debugger which can help find segfaults or find other mistakes in your program. to use it compile it using the *-g* option (put it directly after "gcc") and then instead of running it like ./<programname>, you run it as gdb ./<programname>. this should launch you into a gdb environment. in this environment you can use the following commands:
