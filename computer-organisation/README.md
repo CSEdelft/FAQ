@@ -73,7 +73,8 @@ registers work like this, meaning every row in the above table is actually the s
 | opcode | operands | function | description |
 | --- | --- | --- | --- |
 | mov | src,dst | dst = src | copy |
-| pushq | dst | dst = (%rsp), %rsp += 8 | pops a value off the stack |
+| push | dst |(%rsp) = dst, %rsp -= 8 | pushes a value onto the stack |
+| pop | src | %rsp += 8,src=(%rsp) | pops a value off the stack |
 | xchg | A,B | A,B = B,A | switches the contents of A and B |
 | --- | --- | --- | --- |
 | addq | src,dst | dst = dst + src | adds src to dst |
