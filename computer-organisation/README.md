@@ -191,7 +191,7 @@ rodata should be used (and is optimized for) storing constant data. this section
 
 
 ## X86 Calling Convention
-The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. 
+The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. *for __64__ bit programs only*
 The first six integer or pointer arguments passed in the registers in this order: 
 1. `RDI`
 2. `RSI` 
