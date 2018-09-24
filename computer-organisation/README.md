@@ -20,7 +20,7 @@ FAQ For Computer Organisation
 |64-bit register | Lower 32 bits | Lower 16 bits | Lower 8 bits	 |
 | -------------- | ------------- | ------------- | ------------- |
 |rax             | eax           | ax            | al 		 |
-|rbx             | ebx           | bx            | bpl		 | 
+|rbx             | ebx           | bx            | bl		 | 
 |rcx             | ecx           | cx            | cl		 |
 |rdx             | edx           | dx            | dl		 |
 |rsi             | esi           | si            | sil	 	 |
