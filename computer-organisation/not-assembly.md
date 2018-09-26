@@ -5,7 +5,7 @@ FAQ For Computer Organisation
 ## Table Of Contents
 
 1. [base conversion](#Base-Conversion)
-	1. [division method](#division-methid)
+	1. [division method](#division-meth0d)
 	2. [subtraction method](#subtraction-method)
 	3. [divisible bases](#divisible-bases)
 
