@@ -1,5 +1,5 @@
-# Computer Organisation
-FAQ For Computer Organisation
+# Assembly
+FAQ For Computer Organisation's Assembly
 ## Table of contents
 1. [Registers](#registers)
 	1. [Table](#registers-table)
