@@ -3,8 +3,8 @@ FAQ on everything from CSE delft year 1
 
 ## Courses
 ### Term 1
-* [Assembly)](computer-organisation/assembly.md)
-* [Computer Organisation)](computer-organisation/not-assembly.md)
+* [Assembly](computer-organisation/assembly.md)
+* [Computer Organisation](computer-organisation/not-assembly.md)
 * [Object Oriented Programming](object-oriented-programming/README.md)
 * [Reasoning and Logic](reasoning-and-logic/README.md)
 
