@@ -151,7 +151,7 @@ range: for n bits, (-2^n-1) + 1 -- (2^n-1)-1, has both positive and negative 0. 
 
 2s complement is the hardest representation for negative numbers for humans to read, but the easiest and most efficient for computers to work with. that's why its almost always used inside cpus. 2s complement is the same as adding 1 to the corresponding 1s complement number, whenever it's negative
 
-this makes 100101 negative 25, and 01001 still positive 9.
+this makes 100101 negative 27, and 01001 still positive 9.
 
 range: for n bits, (-2^n-1) -- (2^n-1)-1, has both positive and negative 0. for 4 bits: -8...0...+7 
 
