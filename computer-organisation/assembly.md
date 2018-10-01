@@ -1,5 +1,5 @@
-# Computer Organisation
-FAQ For Computer Organisation
+# Assembly
+FAQ For Computer Organisation's Assembly
 ## Table of contents
 1. [Registers](#registers)
 	1. [Table](#registers-table)
@@ -20,7 +20,7 @@ FAQ For Computer Organisation
 |64-bit register | Lower 32 bits | Lower 16 bits | Lower 8 bits	 |
 | -------------- | ------------- | ------------- | ------------- |
 |rax             | eax           | ax            | al 		 |
-|rbx             | ebx           | bx            | bpl		 | 
+|rbx             | ebx           | bx            | bl		 | 
 |rcx             | ecx           | cx            | cl		 |
 |rdx             | edx           | dx            | dl		 |
 |rsi             | esi           | si            | sil	 	 |
@@ -73,7 +73,8 @@ registers work like this, meaning every row in the above table is actually the s
 | opcode | operands | function | description |
 | --- | --- | --- | --- |
 | mov | src,dst | dst = src | copy |
-| pushq | dst | dst = (%rsp), %rsp += 8 | pops a value off the stack |
+| push | dst |(%rsp) = dst, %rsp -= 8 | pushes a value onto the stack |
+| pop | src | %rsp += 8,src=(%rsp) | pops a value off the stack |
 | xchg | A,B | A,B = B,A | switches the contents of A and B |
 | --- | --- | --- | --- |
 | addq | src,dst | dst = dst + src | adds src to dst |
@@ -190,7 +191,7 @@ rodata should be used (and is optimized for) storing constant data. this section
 
 
 ## X86 Calling Convention
-The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. 
+The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. *for __64__ bit programs only*
 The first six integer or pointer arguments passed in the registers in this order: 
 1. `RDI`
 2. `RSI` 
@@ -204,6 +205,9 @@ The first six integer or pointer arguments passed in the registers in this order
 The return values are stored in `RAX` (In case of a 64 bit number) and in `RDX:RAX` (MSB:LSB) in case of 128 bit numbers.
 
 [Source \(x86 Calling Conventions Wikipedia\)](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI)
+
+An illustration of how C functions are called in respect to the x86_64 SysV calling convention:
+![args](https://user-images.githubusercontent.com/10385659/45920669-305d3c80-bea8-11e8-932f-f198d48c4e2d.jpg)
 
 ## gdb
 
