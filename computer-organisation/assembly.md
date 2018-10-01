@@ -36,6 +36,10 @@ FAQ For Computer Organisation's Assembly
 |r14             | r14d          | r14w          | r14b	 	 |
 |r15             | r15d          | r15w          | r15b	 	 |
 
+other important registers:
+RIP = instruction pointer, points to the next instruction to be executed. changing this register is the same as a jumps   
+RFLAGS = register that stores information about the last calculation (flags) to use for conditional jumps
+
 [Source/More Info](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
 
 
@@ -167,6 +171,8 @@ the 4 sections of an assembly program are
 * [.data](#data)
 * [.bss](#bss)
 * [.rodata](#rodata)
+
+using linker scripts (google if you want to know more) more sections can be added. this is done in the gamelib for assignment 7
 
 note that any part of assembly can be in any section. sections are *just* for optimalization. This means you can put data in text, and text in bss. the only 'restrictive' section is rodata because it can only store read only data.
 *note*: [using GDB](#GDB) works only if code is in .text 
