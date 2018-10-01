@@ -36,6 +36,10 @@ FAQ For Computer Organisation's Assembly
 |r14             | r14d          | r14w          | r14b	 	 |
 |r15             | r15d          | r15w          | r15b	 	 |
 
+other important registers:
+RIP = instruction pointer, points to the next instruction to be executed. changing this register is the same as a jumps   
+RFLAGS = register that stores information about the last calculation (flags) to use for conditional jumps
+
 [Source/More Info](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
 
 
