@@ -172,6 +172,8 @@ the 4 sections of an assembly program are
 * [.bss](#bss)
 * [.rodata](#rodata)
 
+using linker scripts (google if you want to know more) more sections can be added. this is done in the gamelib for assignment 7
+
 note that any part of assembly can be in any section. sections are *just* for optimalization. This means you can put data in text, and text in bss. the only 'restrictive' section is rodata because it can only store read only data.
 *note*: [using GDB](#GDB) works only if code is in .text 
 
