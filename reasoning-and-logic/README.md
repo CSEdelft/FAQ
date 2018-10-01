@@ -42,3 +42,6 @@ De Morgan's law states the following equivalences:
 
 ## Sources
 * [DNF](http://www.barrywatson.se/cl/cl_dnf.html)
+
+## Useful Links
+* [Logical Equivalence](https://en.wikipedia.org/wiki/Logical_equivalence)
