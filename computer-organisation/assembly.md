@@ -103,6 +103,8 @@ registers work like this, meaning every row in the above table is actually the s
 | andq | src,dst | src = src or dst | bitwise and | 
 | shlq | A,dst | src = src << A | shift left |
 | shrq | A,dst | src = src >> A | shift right |
+| not | dst | dst = 1111111- dst | bitwise inversion of dst |
+| neg | dst | dst = 0 - dst | 2's complement, result of not and add 1 |
 | leaq | A, dst | dst = &A | load effective adress (& means adress of) |
 | int | int_no | | software interrupt (see linux system calls above, used together with int 0x80) |
 
