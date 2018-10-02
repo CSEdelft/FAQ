@@ -1,5 +1,5 @@
-# Computer Organisation
-FAQ For Computer Organisation
+# Assembly
+FAQ For Computer Organisation's Assembly
 ## Table of contents
 1. [Registers](#registers)
 	1. [Table](#registers-table)
@@ -20,7 +20,7 @@ FAQ For Computer Organisation
 |64-bit register | Lower 32 bits | Lower 16 bits | Lower 8 bits	 |
 | -------------- | ------------- | ------------- | ------------- |
 |rax             | eax           | ax            | al 		 |
-|rbx             | ebx           | bx            | bpl		 | 
+|rbx             | ebx           | bx            | bl		 | 
 |rcx             | ecx           | cx            | cl		 |
 |rdx             | edx           | dx            | dl		 |
 |rsi             | esi           | si            | sil	 	 |
@@ -35,6 +35,10 @@ FAQ For Computer Organisation
 |r13             | r13d          | r13w          | r13b	 	 |
 |r14             | r14d          | r14w          | r14b	 	 |
 |r15             | r15d          | r15w          | r15b	 	 |
+
+other important registers:
+RIP = instruction pointer, points to the next instruction to be executed. changing this register is the same as a jumps   
+RFLAGS = register that stores information about the last calculation (flags) to use for conditional jumps
 
 [Source/More Info](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/x64-architecture)
 
@@ -73,7 +77,8 @@ registers work like this, meaning every row in the above table is actually the s
 | opcode | operands | function | description |
 | --- | --- | --- | --- |
 | mov | src,dst | dst = src | copy |
-| pushq | dst | dst = (%rsp), %rsp += 8 | pops a value off the stack |
+| push | dst |(%rsp) = dst, %rsp -= 8 | pushes a value onto the stack |
+| pop | src | %rsp += 8,src=(%rsp) | pops a value off the stack |
 | xchg | A,B | A,B = B,A | switches the contents of A and B |
 | --- | --- | --- | --- |
 | addq | src,dst | dst = dst + src | adds src to dst |
@@ -102,6 +107,8 @@ registers work like this, meaning every row in the above table is actually the s
 | andq | src,dst | src = src or dst | bitwise and | 
 | shlq | A,dst | src = src << A | shift left |
 | shrq | A,dst | src = src >> A | shift right |
+| not | dst | dst = 1111111- dst | bitwise inversion of dst |
+| neg | dst | dst = 0 - dst | 2's complement, result of not and add 1 |
 | leaq | A, dst | dst = &A | load effective adress (& means adress of) |
 | int | int_no | | software interrupt (see linux system calls above, used together with int 0x80) |
 
@@ -138,12 +145,12 @@ And to destroy it again use:
 | --- | --- | --- |
 |movq $label,%rax | immediate (pointer) | loads the location of the label into rax | 
 |movq label,%rax | immediate | loads the quadword at the location of the label into rax | 
-|movq (%rbx),%rax | inderect | loads the quadword at the location pointed to by rbx into rax | 
-|movq 8(%rbx),%rax | inderect offset (positive) | loads the quadword 8 after the location pointed to by rbx into rax | 
-|movq -8(%rbx),%rax | inderect offset (negative) | loads the quadword 8 before the location pointed to by rbx into rax | 
-|movq (%rbx,%rcx),%rax | inderect variable offset | loads the quadword at %rcx after the location pointed to by rbx into rax | 
-|movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
-|movq 8(%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
+|movq (%rbx),%rax | indirect | loads the quadword at the location pointed to by rbx into rax | 
+|movq 8(%rbx),%rax | indirect offset (positive) | loads the quadword 8 after the location pointed to by rbx into rax | 
+|movq -8(%rbx),%rax | indirect offset (negative) | loads the quadword 8 before the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx),%rax | indirect variable offset | loads the quadword at %rcx after the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx,8),%rax | indirect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
+|movq 8(%rbx,%rcx,8),%rax | indirect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
 
 ## Assembler Directives
 
@@ -166,6 +173,8 @@ the 4 sections of an assembly program are
 * [.data](#data)
 * [.bss](#bss)
 * [.rodata](#rodata)
+
+using linker scripts (google if you want to know more) more sections can be added. this is done in the gamelib for assignment 7
 
 note that any part of assembly can be in any section. sections are *just* for optimalization. This means you can put data in text, and text in bss. the only 'restrictive' section is rodata because it can only store read only data.
 *note*: [using GDB](#GDB) works only if code is in .text 
@@ -190,7 +199,7 @@ rodata should be used (and is optimized for) storing constant data. this section
 
 
 ## X86 Calling Convention
-The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. 
+The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. *for __64__ bit programs only*
 The first six integer or pointer arguments passed in the registers in this order: 
 1. `RDI`
 2. `RSI` 
@@ -204,6 +213,9 @@ The first six integer or pointer arguments passed in the registers in this order
 The return values are stored in `RAX` (In case of a 64 bit number) and in `RDX:RAX` (MSB:LSB) in case of 128 bit numbers.
 
 [Source \(x86 Calling Conventions Wikipedia\)](https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI)
+
+An illustration of how C functions are called in respect to the x86_64 SysV calling convention:
+![args](https://user-images.githubusercontent.com/10385659/45920669-305d3c80-bea8-11e8-932f-f198d48c4e2d.jpg)
 
 ## gdb
 
