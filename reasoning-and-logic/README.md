@@ -39,6 +39,8 @@ De Morgan's law states the following equivalences:
 *   ¬(A ∧ B) ⇔ ¬A ∨ ¬B
 *   ¬(A ∨ B) ⇔ ¬A ∧ ¬B
 
+## Arguments
+
 
 ## Sources
 * [DNF](http://www.barrywatson.se/cl/cl_dnf.html)
