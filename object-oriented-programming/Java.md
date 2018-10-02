@@ -1,6 +1,10 @@
 ## Free Java Courses
 
+#Codecademy is a website that teaches you to code in an interactive way (for free!)
+
 *[codecademy](https://www.codecademy.com/learn/learn-java)
+
+#thenewboston is a youtube channel that has many great programming and science-related tutorials
 
 *[thenewboston - beginner](https://m.youtube.com/playlist?list=PLFE2CE09D83EE3E28)
 
