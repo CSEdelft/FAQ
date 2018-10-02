@@ -136,7 +136,7 @@ range: for n bits, (-2^n-1) + 1 -- (2^n-1)-1, has both positive and negative 0. 
 
 1s complement is a lot easier (But still not amazing) for computers to calculate with, and it is also quite readable by humans. 1s complement is the same as sign and magnitude, but when the sign is negative, all other bits are inverted.
 
-This makes 100101 negative 26 and 01001 positive 9. 
+This makes 100101 negative 26 and 01001 positive 9.
 
 Range: for n bits, (-2^n-1) + 1 -- (2^n-1)-1, has both positive and negative 0. for 4 bits: -7...-0.+0...+7 
 
@@ -148,7 +148,33 @@ This makes 100101 negative 27, and 01001 still positive 9.
 
 Range: for n bits, (-2^n-1) -- (2^n-1)-1, has both positive and negative 0. for 4 bits: -8...0...+7 
 
+#### 2s complement math
+Addition: Addition in 2s complement is very easy you just add the two numbers together like you normally would (this even works with negative numbers and is the reason why it is used in computers so much).
+
+Subtraction: Subtraction is the same as adding a positive and a negative number, so that is exactly how you do subtraction in 2s complement: You first make the value you are subtracting negative (invert and add one) and then you just add.
+
 ### Excess-n
+
+Excess-n (or binary offset) representation is just normal binary representation with an offset n and works the following:
+
+* The smallest binary number represents the smallest value (0 − excess)
+* The greatest binary number represents the largest value (2^(n+1) − excess − 1)
+
+Here is an example of Excess-3
+
+|Decimal|Excess-3|Binary|
+|-------|--------|------|
+|-3     |0000    | N/A  |
+|-2     |0001    | N/A  |
+|-1     |0010    | N/A  |
+|0      |0011    | 0000 |
+|1      |0100    | 0001 |
+|2      |0101    | 0010 |
+|3      |0110    | 0011 |
+|4      |0111    | 0100 |
+|...    |...     | ...  |
+
+
 
 ### Fixed point
 
