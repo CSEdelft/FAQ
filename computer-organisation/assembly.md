@@ -145,12 +145,12 @@ And to destroy it again use:
 | --- | --- | --- |
 |movq $label,%rax | immediate (pointer) | loads the location of the label into rax | 
 |movq label,%rax | immediate | loads the quadword at the location of the label into rax | 
-|movq (%rbx),%rax | inderect | loads the quadword at the location pointed to by rbx into rax | 
-|movq 8(%rbx),%rax | inderect offset (positive) | loads the quadword 8 after the location pointed to by rbx into rax | 
-|movq -8(%rbx),%rax | inderect offset (negative) | loads the quadword 8 before the location pointed to by rbx into rax | 
-|movq (%rbx,%rcx),%rax | inderect variable offset | loads the quadword at %rcx after the location pointed to by rbx into rax | 
-|movq (%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
-|movq 8(%rbx,%rcx,8),%rax | inderect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
+|movq (%rbx),%rax | indirect | loads the quadword at the location pointed to by rbx into rax | 
+|movq 8(%rbx),%rax | indirect offset (positive) | loads the quadword 8 after the location pointed to by rbx into rax | 
+|movq -8(%rbx),%rax | indirect offset (negative) | loads the quadword 8 before the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx),%rax | indirect variable offset | loads the quadword at %rcx after the location pointed to by rbx into rax | 
+|movq (%rbx,%rcx,8),%rax | indirect variable scaled offset (negative) | loads the quadword at %rcx*8 after the location pointed to by rbx into rax | 
+|movq 8(%rbx,%rcx,8),%rax | indirect variable scaled offset (negative) +constant | loads the quadword at 8 after %rcx*8 after the location pointed to by rbx into rax | 
 
 ## Assembler Directives
 
