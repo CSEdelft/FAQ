@@ -58,3 +58,5 @@ Principal of explosion: if one of the premesis is a contradiction (i.e. always f
 
 ## Useful Links
 * [Logical Equivalence](https://en.wikipedia.org/wiki/Logical_equivalence)
+
+* [Recursion](https://en.wikipedia.org/wiki/Recursion#In_mathematics)
