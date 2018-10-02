@@ -7,11 +7,11 @@ FAQ For Computer Organisation's Assembly
 2. [Opcode Table](#opcode-table)
 3. [Stackframes](#stackframe)
 4. [Addressing Modes](#addressing-modes)
-5. [Assembly Directives](#assembly-directives)
+5. [Assembler Directives](#assembler-directives)
 6. [sections](#sections)
 7. [X86 Calling Convention](#x86-calling-convention)
 8. [Handy Links](#handy-links)
-9. [gdb](#gdb)
+9. [GDB](#gdb)
 10. [command line arguments](#command-line-arguments)
 
 ## Registers
@@ -36,7 +36,7 @@ FAQ For Computer Organisation's Assembly
 |r14             | r14d          | r14w          | r14b	 	 |
 |r15             | r15d          | r15w          | r15b	 	 |
 
-other important registers:
+Other important registers:
 RIP = instruction pointer, points to the next instruction to be executed. changing this register is the same as a jumps   
 RFLAGS = register that stores information about the last calculation (flags) to use for conditional jumps
 
@@ -44,7 +44,7 @@ RFLAGS = register that stores information about the last calculation (flags) to 
 
 
 ### Register Memory Layout
-registers work like this, meaning every row in the above table is actually the same register but parts of it as shown below:
+Registers work like this, meaning every row in the above table is actually the same register but parts of it as shown below:
 
 <table class="registers">
 	<tbody>
@@ -154,7 +154,7 @@ And to destroy it again use:
 
 ## Assembler Directives
 
-assembler directives are notes for the assembler which tell it how to do the compiling. 
+Assembler directives are notes for the assembler which tell it how to do the compiling. 
 
 | directive | explaination |
 | --------- | ------------ | 
@@ -166,9 +166,9 @@ assembler directives are notes for the assembler which tell it how to do the com
 | .ascii | reserves space for a string of text to be stored, *not* automatically terminated by a 0 (NULL ) | 
 | .skip n | skips n bytes. useful for defining arrays of data. This should normally only be used in the .bss [section](#bss) | 
 
-## sections
+## Sections
 
-the 4 sections of an assembly program are
+The 4 sections of an assembly program are
 * [.text](#text)
 * [.data](#data)
 * [.bss](#bss)
@@ -197,7 +197,6 @@ in .bss data can also be stored. the difference is that bss data *must* be unini
 
 rodata should be used (and is optimized for) storing constant data. this section can *only* be read from.
 
-
 ## X86 Calling Convention
 The calling convention (System V AMD64 ABI) that is used on \*nix systems is as follows. *for __64__ bit programs only*
 The first six integer or pointer arguments passed in the registers in this order: 
@@ -217,9 +216,9 @@ The return values are stored in `RAX` (In case of a 64 bit number) and in `RDX:R
 An illustration of how C functions are called in respect to the x86_64 SysV calling convention:
 ![args](https://user-images.githubusercontent.com/10385659/45920669-305d3c80-bea8-11e8-932f-f198d48c4e2d.jpg)
 
-## gdb
+## GDB
 
-gdb is a debugger which can help find segfaults or find other mistakes in your program. to use it compile it using the *-g* option (put it directly after "gcc") and then instead of running it like ./<programname>, you run it as gdb ./<programname>. this should launch you into a gdb environment. in this environment you can use the following commands:
+GDB is a debugger which can help find segfaults or find other mistakes in your program. to use it compile it using the *-g* option (put it directly after "gcc") and then instead of running it like ./<programname>, you run it as gdb ./<programname>. this should launch you into a gdb environment. in this environment you can use the following commands:
 
 * b n (or breakpoint). this sets a breakpoint on line n
 * print code. this prints whatever you specify in code. this can be a full c expression, or a register name (e.g. $rdi or $rax)
@@ -230,17 +229,14 @@ gdb is a debugger which can help find segfaults or find other mistakes in your p
 * c (or continue) after a breakpoint, continue restarts execution like run did until it encounters another breakpoint or the program ends. useful if a breakpoint is in a loop and you want to go to the next iteration
 * start starts the program, places a breakpoint on line one so you can imediately start using s and n
 
-when using gdb your program *must* be compiled with -g and your code *must* be in a .text section
+when using GDB your program *must* be compiled with -g and your code *must* be in a .text section
+
+## command line arguments
+
+Getting command line arguments is easy in assembly. basically it works the same as in C. The main function/label is actually called with 2 arguments in rdi and rsi. rdi is the ammount of arguments, and rsi is a pointer to an array of strings which holds the arguments. you know where the array ends with argc/rdi.
 
 ## Handy Links
 * [reference of linux syscalls](http://syscalls.kernelgrok.com/)
 * [quick assembly cheatsheet](https://www3.nd.edu/~dthain/courses/cse40243/fall2015/intel-intro.html)
 * [quick assembly cheatsheet 2](https://www.cs.uaf.edu/2005/fall/cs301/support/x86/index.html)
 * [quick assembly cheatsheet 3](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
-
-
-## command line arguments
-
-getting command line arguments is easy in assembly. basically it works the same as in c. the main function/label is actually called with 2 arguments in rdi and rsi. rdi is the ammount of arguments, and rsi is a pointer to an array of strings which holds the arguments. you know where the array ends with argc/rdi.
-
-
