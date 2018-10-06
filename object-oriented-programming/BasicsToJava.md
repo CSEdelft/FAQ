@@ -1,3 +1,131 @@
+# Object-oriented programming
+FAQ / Crash course for Java (OOP).
+
+***
+## Table of contents
+1. [Syntax and conventions](#Syntax-and-conventions)
+    A. [Definitions](#Definitions)
+    B. [Primitive types](#Primitve-types)
+    C. [Modifiers](#Modifiers)
+    D. [Naming conventions](#Naming-conventions)
+2. Operators
+    A. Arithmetic
+    B. Relational
+    C. Logical
+    D. Assignment
+    E. Miscellaneous
+3. Control statements
+    A. Conditional Execution
+    B. Loops
+    C. Flow control
+4. Objects
+    A. Instantiation
+    B. Instance variables vs class variables
+5. Tests
+6. Running everything
+7. Helpful links and credits
+
+***
+## Syntax and conventions
+This guide will be usefull for everyone who wasn't able to get a good grasp on the topics during the lecture, was half-asleep at 8:45 in the morning, or simply wants to brush up their knowledge of the beautiful thing that is called Java. But before we get you on your way in your Java career, there a few things that will be helpful to know in your Java learning pursuits. Let's discuss those first.
+
+### Definitions
+**JVM:** The JVM, or Java Virtual Machine, is the virtual machine that executes java bytecode. Your knowledge of this beautiful piece of software doesn't have to be too extensive. All you have to know is that the JVM makes sure your code works on several platforms, without you having to rewrite it several times. 
+
+**JRE:** The JRE, or the Java Runtime Environment, contains all libraries, the JVM and any other necessary components to run your Java program. 
+
+**JDK:** The JDK, or the Java Development Kit, contains everything in the JRE, plus some extra goodies like compilers and debuggers. Useful for us!
+
+**Object:** Now that we're done with the three letter definitions, we can continue with the useful stuff. An object is essentially a container for a set of states/behaviours (you could call this variables) and methods to interact with them. For example, a car has multiple different states and behaviours: color, brand, type, top speed, driving, out of gas. An object is an instance of a Class.
+
+**Class:** You could see this as an template for Objects. In a Class you define the (default) states and behaviours of your Object. In the previous example of a car, you would define your Class as 'a car has a color which defaults to red, a brand and top speed that you define when creating a new car, and is by default not driving...'
+
+**Method:** A method is the actual behavior of your object. This is where you write your logic and manipulate data.
+
+**Instance Variables:** I've mentioned 'states' several times now, but what are states actually? They are defined with instance variables, which keep track of the current states of your object. Instance variables are like the normal variables you've heard about, but they're 'owned' by an object. If this definition sounds a bit vague, don't worry, instance variables will be discussed later on.
+
+**Constant:** These are just like the regular physics constants you've learned about in high school, but in this case you can actually define them. Constants are just like normal variables, with one small detail: they can be set/changed/assigned only once. You'd normally prefix these variables with '*final*', and often '*static*'.
+
+### Primitive Types
+You've probably heard about these in lectures or came across one yourself (if not, you probably did see one, but didn't know it was a primitive): primitives. Just like in most other languages, Java has a set of primitive types, which you use to store the most basic types of data. Even if you somehow end up not directly writing them yourself, these are somehow used in everything you make. They are the building blocks of data manipulation.
+
+**boolean:** This is about as basic as we can get, while still maintaining functionality. This type stores one of two possible states: true or false. So if you would want to store something like something being either enabled of disabled, this is the thing for you.
+
+**byte:** You won't see this type often, but it can be used to save some space in some cases. As the name suggests this is an 8-bit integer, which means it can store values from -128 to +127. From the range you probably noticed something: it's an signed integer. That's because Java's primitives only store signed numbers, not unsigned. From now on I won't mention this anymore, because I assume you know.
+
+**short:** This is also an integer value. This time of 16-bit, so that's -32,769 to +32,767.
+
+**int:** You probably have seen this one already, since it's the 'normal' integer value. An int is a 32-bit value, so it's range is -2,147,483,648 - +2,147,483,647.
+
+**long:** Another integer value. As the name suggests it can store bigger numbers than int. Since long is a 64-bit value, you can store anything between -9,223,372,036,854,775,808 and 9,223,372,036,854,775,807. You normally use this type when a function requires it, or when an int cannot store your desired number.
+
+**float:** This is just a 32-bit floating-point value.
+
+**double:** This is also a floating-point value, 64-bits this time. Watch out for [rounding off errors](https://www.geeksforgeeks.org/rounding-off-errors-java/) when using doubles and floats.
+
+**char:** A char is a single 16-bit [Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) character. It can store values between '\u0000' and '\uffff'.
+
+Should you prefer a more visual list of the primitive types:
+![primitive_data_type](https://user-images.githubusercontent.com/41565823/46495600-1f9cb700-c816-11e8-9a29-a961a3be48eb.png)
+
+#### Special mentions
+**String:** While technically not a primitive type, a string will usally be part of any program. It is made up of an array of chars.
+
+**Wrapper Types:** You may have come across classes like 'Integer' and 'Double' and wondered what the difference between those and primitive types are. These exists so you can use them in instances where an Object is required (try making an ArrayList with primitives). These can be used interchangeably with primitive types, but you should use primitive types whenever possible.
+
+### Modifiers
+Modifiers can be applied to a number of things: classes, variables and methods. They provide funtionality and control access to data.
+
+##### Access control
+These modifiers change the accessibility of data. It it generally best to be as restrictive as possible.
+
+**public:** Externally visible from an instance of the class. You can acces this data from anywhere.
+
+**protected:** This modifier makes something visible from inside the class, from the package and from any subclasses of the class.
+
+**no modifier:** Without a modifier the data is accessible from anywhere within the same package
+
+**private:** This modifier make something visible only to the class which contains it. 
+
+
+If you like tables better:
+
+|             | Class   | Package   | Subclass (same package)   | Subclass (different package)   | World |
+| ----------- | :-----: | :-------: | :-----------------------: | :----------------------------: | :---: |
+| public      | +       | +         | +                         | +                              | +     |
+| protected   | +       | +         | +                         | +                              | -     |
+| no modifier | +       | +         | +                         | -                              | -     |
+| private     | +       | -         | -                         | -                              | -     |
+*+ = accessible*
+*- = not accessible*
+
+#### Other modifiers
+There are several other modifiers besides the two down below, but you won't use them as much. If you need more a list can be found [here](https://docstore.mik.ua/orelly/java-ent/jnut/ch03_14.htm).
+
+**static:** This one is for class-level methods and variables. If you use this modifier, the data will remain constant rather than being controlled by individual instances.
+
+**final:** As I quickly mentioned in definitions, the final modifier is used to define constants. When you use this modifier Java will not allow any changes to the data, except for the initial assignment (in class or constructor). 
+
+### Naming conventions
+Naming conventions are simply a set of rules to follow when deciding on names for your classes, packages, variables, methods and so on. These rules make it easier for you and other people to follow and understand your code. Nobody is forcing you to follow these conventions, but the future you and your peers will be thankful if you do. If you've programmed in another language for years and don't want to drop those naming conventions: no problem, but just make sure your code is clear and readable.
+
+**Classes:** Classes should be named in UpperCamelCase. Examples: Lawyer, Prosecutor, Car.
+
+**Methods:** Methods should be named in lowerCamelCase. Examples: submitAssignment(), isAwesome(), bufferScreen().
+
+**Variables:** These should also be named in lowerCamelCase. Example: settingsFrame, keyPair, corePoolThreads.
+
+**Packages:** Packages should be in lowercase. The regular structure of a package name is: <reversed.domain.name>.<project_name>[.<any_sub_packages>]. This is to avoid clashes. You probably don't own a domain name, so me.<your_name>.<project_name>[.<any_sub_packages>] should suffice. Example: nl.tudelft.peer
+
+**Constants:** Constants should be in uppercase. Example: public static final float GUESSING_CORRECTION = -2.5;
+
+Another important part of naming conventions is giving things *meaningful* names. If I read your code I should be able to understand what your functions do and what data your variables hold, without having to investigate. 
+
+
+***
+# WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP
+*(Work in progress)*
+
 **BASICS WITH HELLO WORLD**
 
 First of all, I will give you a simple overview of how a Java program looks like. 
