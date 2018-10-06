@@ -1,19 +1,20 @@
 # Object-oriented programming
 FAQ / Crash course for Java (OOP).
 
-***
 ## Table of contents
-1. [Syntax and conventions](#Syntax-and-conventions)
-    1. [Definitions](#Definitions)
-    2. [Primitive types](#Primitve-types)
-    3. [Modifiers](#Modifiers)
-    4. [Naming conventions](#Naming-conventions)
-2. Operators
-    1. Arithmetic
-    2. Relational
-    3. Logical
-    4. Assignment
-    5. Miscellaneous
+***
+1. [Syntax and conventions](#syntax-and-conventions)
+    1. [Definitions](#definitions)
+    2. [Primitive types](#primitive-types)
+    3. [Modifiers](#modifiers)
+    4. [Naming conventions](#naming-conventions)
+2. [Operators](#operators)
+    1. [Arithmetic](#arithmetic)
+    2. [Relational](#relational)
+    3. [Logical](#logical)
+    4. [Bitwise](#bitwise)
+    5. [Assignment](#assignment)
+    6. [Miscellaneous](#miscellaneous)
 3. Control statements
     1. Conditional Execution
     2. Loops
@@ -25,8 +26,8 @@ FAQ / Crash course for Java (OOP).
 6. Running everything
 7. Helpful links and credits
 
-***
 ## Syntax and conventions
+***
 This guide will be usefull for everyone who wasn't able to get a good grasp on the topics during the lecture, was half-asleep at 8:45 in the morning, or simply wants to brush up their knowledge of the beautiful thing that is called Java. But before we get you on your way in your Java career, there a few things that will be helpful to know in your Java learning pursuits. Let's discuss those first.
 
 ### Definitions
@@ -87,7 +88,6 @@ These modifiers change the accessibility of data. It it generally best to be as 
 
 **private:** This modifier make something visible only to the class which contains it. 
 
-
 If you like tables better:
 
 |             | Class   | Package   | Subclass (same package)   | Subclass (different package)   | World |
@@ -121,9 +121,111 @@ Naming conventions are simply a set of rules to follow when deciding on names fo
 
 Another important part of naming conventions is giving things *meaningful* names. If I read your code I should be able to understand what your functions do and what data your variables hold, without having to investigate. 
 
-
+# Operators
 ***
+These things called operators are used to use and manipulate variables.
+
+## Arithmetic
+Arithmetic operators are used in mathematical expressions in the same you would use them in algebra. These symbols mostly speak for themselves (A = 10 & B = 5):
+
+| Operator | Name           | Operation | Result |
+| :------: | :--:           | :-------: | :----: |
+| +        | Addition       | A + B     | 15
+| -        | Subtraction    | A - B     | 5
+| *        | Multiplication | A * B     | 50
+| /        | Division       | A / B     | 2
+| %        | Modulus        | A % B     | 0
+| ++       | Increment      | A++       | A == 11
+| --       | Decrement      | B--       | B == 5
+
+## Relational
+These operators are relatively easy too. These operators can be used in conditional statements, where they act as a boolean (A = 10 & B = 5):
+
+| Operator | Name                       | Operation | Result |
+| :------: | :--:                       | :-------: | :----: |
+| ==       | Equal to                   | A == B    | false
+| !=       | Not equal to               | A != B    | true
+| >        | Greater than               | A > B     | true
+| <        | Less than                  | A < B     | false
+| >=       | Greater than or equal to   | A >= B    | true
+| <=       | Less than or equal to      | A <= B    | false
+
+## Logical
+Logical operators are used to return a boolean based on the boolean result of multiple expressions. These are so called lazy operators: Java will only evaluate operand if they can still change the result. So if the expression is something like '*false && A % B == 0*', Java will not bother evaluating the second operand, because its result cannot change the final result. You can read why you might want this [here](https://stackoverflow.com/questions/7101992/why-do-we-usually-use-not-what-is-the-difference).
+
+| Operator | Name             | Operation                    | Result |
+| :------: | :--:             | :-------: | :----: |
+| &&       | And              | 5 - 1 == 4 && 10 % 2 == 0    | true
+| &verbar;&verbar;       | Or               | 5 - 1 == 3 &verbar;&verbar; 10 % 2 == 0    | true
+| !        | Not              | !(5 - 1 == 4)                | false
+
+## Bitwise
+I doubt we'll need these operators for OOP, but for the sake of completion and to quench your thirst for knowledge I will still add these to the guide. Bitwise operators work just like they do in Computer Organisation / Reasoning and Logic:
+
+| Operator | Name | Example        | R & L Equivalence | Result (Decimal) | Result (Binary) |
+| :------: | :---: |:--:           | :-------: | :---: | :---: |
+| &        | AND | 60 & 13        | A &and; B   | 12 | 0000 1100
+| &verbar; | OR | 60 &verbar; 13 | A &or; B | 61 | 0011 1101
+| ^        | XOR | 60 ^ 13        | A &xoplus; B | 49 | 0011 0001
+| ~        | NOT | ~(60)          | &not;A | -61 | 1100 0011
+| <<       | Shift left | 60 << 2        | NaN | 240 | 1111 0000
+| >>       | Shift right | 60 >> 2          | NaN | 15 | 1111
+| >>>      | Shift right zero | 60 >>> 2 | NaN | 15 | 0000 1111
+
+## Assignment
+These operators are used to assign values to variables.
+
+| Operator | Example  | Equivalent to | 
+| :------: | :--:     | :-------: | 
+| =        | A = B    | A = B   
+| +=       | A += B   | A = A + B 
+| -=       | A -= B   | A = A - B
+| *=       | A *= B   | A = A * B
+| /=       | A /= B   | A = A / B 
+| %=       | A %= B   | A = A % B
+| <<=      | A <<= B  | A = A << B  
+| >>=      | A >>= B  | A = A >> B 
+| &=       | A &= B   | A = A & B  
+| ^=       | A ^= B   | A = A ^ B  
+| &verbar;=       | A &verbar;= B   | A = A &verbar; B 
+
+## Miscellaneous
+There are two useful operators outside of those categories.
+
+**? (Conditional Operator):** A conditional operator is used to evaluate a boolean value and decide what value should be there based on the boolean. You could see this as a shorter if-statement. For example:
+```java
+// This function is equal to the second one
+private String getPassword()
+{
+    return this.password == null ? "no password" : this.password;
+}
+
+private String getPassword()
+{
+    if (this.password == null)
+    {
+        return "no password";
+    }
+    
+    return this.password;
+}
+```
+
+**instanceof:** This operator is used to check if an object is of a particular type:
+```java
+private boolean isString(Object object)
+{
+    return instanceof String;
+}
+
+// This will return true:
+isString("string");
+// This will return false:
+isString(new Integer(5));
+```
+
 # WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP
+***
 *(Work in progress)*
 
 **BASICS WITH HELLO WORLD**
