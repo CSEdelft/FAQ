@@ -8,7 +8,7 @@ FAQ on everything from CSE delft year 1
 
 - [Assembly](computer-organisation/assembly.md)
 - [Computer Organisation](computer-organisation/not-assembly.md)
-- [Object Oriented Programming](object-oriented-programming/README.md)
+- [Object Oriented Programming](object-oriented-programming/BasicsToJava.md)
 - [Reasoning and Logic](reasoning-and-logic/README.md)
 
 ## Other summaries
