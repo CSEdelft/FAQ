@@ -4,23 +4,23 @@ FAQ / Crash course for Java (OOP).
 ***
 ## Table of contents
 1. [Syntax and conventions](#Syntax-and-conventions)
-    A. [Definitions](#Definitions)
-    B. [Primitive types](#Primitve-types)
-    C. [Modifiers](#Modifiers)
-    D. [Naming conventions](#Naming-conventions)
+    1. [Definitions](#Definitions)
+    2. [Primitive types](#Primitve-types)
+    3. [Modifiers](#Modifiers)
+    4. [Naming conventions](#Naming-conventions)
 2. Operators
-    A. Arithmetic
-    B. Relational
-    C. Logical
-    D. Assignment
-    E. Miscellaneous
+    1. Arithmetic
+    2. Relational
+    3. Logical
+    4. Assignment
+    5. Miscellaneous
 3. Control statements
-    A. Conditional Execution
-    B. Loops
-    C. Flow control
+    1. Conditional Execution
+    2. Loops
+    3. Flow control
 4. Objects
-    A. Instantiation
-    B. Instance variables vs class variables
+    1. Instantiation
+    2. Instance variables vs class variables
 5. Tests
 6. Running everything
 7. Helpful links and credits
