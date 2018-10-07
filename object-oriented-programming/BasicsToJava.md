@@ -15,20 +15,26 @@ FAQ / Crash course for Java (OOP).
     4. [Bitwise](#bitwise)
     5. [Assignment](#assignment)
     6. [Miscellaneous](#miscellaneous)
-3. Control statements
-    1. Conditional Execution
-    2. Loops
-    3. Flow control
-4. Objects
-    1. Instantiation
-    2. Instance variables vs class variables
-5. Tests
-6. Running everything
-7. Helpful links and credits
+3. [Control statements](#control-statements)
+    1. [Conditional Execution](#conditional-execution)
+    2. [Loops](#loops)
+    3. [Flow control](#flow-control)
+4. [Objects](#objects)
+    1. [Instantiation](#instantiation)
+    2. [Instance variables vs class variables](#instance-variables-vs-class-variables)
+    3. [Inheritance](#inheritance)
+    4. [Abstraction](#abstraction)
+    5. [Interfaces](#interface)
+5. [I/O](#i/o)
+    1. [Files](#files)
+    2. [Console](#console)
+6. [Tests](#tests)
+6. [Running everything](#running-everything)
+7. [Helpful links and credits](#helpful-links-and-credits)
 
 ## Syntax and conventions
 ***
-This guide will be usefull for everyone who wasn't able to get a good grasp on the topics during the lecture, was half-asleep at 8:45 in the morning, or simply wants to brush up their knowledge of the beautiful thing that is called Java. But before we get you on your way in your Java career, there a few things that will be helpful to know in your Java learning pursuits. Let's discuss those first.
+This guide will be useful for everyone who wasn't able to get a good grasp on the topics during the lecture, was half-asleep at 8:45 in the morning, or simply wants to brush up their knowledge of the beautiful thing that is called Java. But before we get you on your way in your Java career, there a few things that will be helpful to know in your Java learning pursuits. Let's discuss those first.
 
 ### Definitions
 **JVM:** The JVM, or Java Virtual Machine, is the virtual machine that executes java bytecode. Your knowledge of this beautiful piece of software doesn't have to be too extensive. All you have to know is that the JVM makes sure your code works on several platforms, without you having to rewrite it several times. 
@@ -77,7 +83,7 @@ Should you prefer a more visual list of the primitive types:
 ### Modifiers
 Modifiers can be applied to a number of things: classes, variables and methods. They provide funtionality and control access to data.
 
-##### Access control
+#### Access control
 These modifiers change the accessibility of data. It it generally best to be as restrictive as possible.
 
 **public:** Externally visible from an instance of the class. You can acces this data from anywhere.
@@ -121,11 +127,11 @@ Naming conventions are simply a set of rules to follow when deciding on names fo
 
 Another important part of naming conventions is giving things *meaningful* names. If I read your code I should be able to understand what your functions do and what data your variables hold, without having to investigate. 
 
-# Operators
+## Operators
 ***
 These things called operators are used to use and manipulate variables.
 
-## Arithmetic
+### Arithmetic
 Arithmetic operators are used in mathematical expressions in the same you would use them in algebra. These symbols mostly speak for themselves (A = 10 & B = 5):
 
 | Operator | Name           | Operation | Result |
@@ -138,7 +144,7 @@ Arithmetic operators are used in mathematical expressions in the same you would 
 | ++       | Increment      | A++       | A == 11
 | --       | Decrement      | B--       | B == 5
 
-## Relational
+### Relational
 These operators are relatively easy too. These operators can be used in conditional statements, where they act as a boolean (A = 10 & B = 5):
 
 | Operator | Name                       | Operation | Result |
@@ -150,7 +156,7 @@ These operators are relatively easy too. These operators can be used in conditio
 | >=       | Greater than or equal to   | A >= B    | true
 | <=       | Less than or equal to      | A <= B    | false
 
-## Logical
+### Logical
 Logical operators are used to return a boolean based on the boolean result of multiple expressions. These are so called lazy operators: Java will only evaluate operand if they can still change the result. So if the expression is something like '*false && A % B == 0*', Java will not bother evaluating the second operand, because its result cannot change the final result. You can read why you might want this [here](https://stackoverflow.com/questions/7101992/why-do-we-usually-use-not-what-is-the-difference).
 
 | Operator | Name             | Operation                    | Result |
@@ -159,7 +165,7 @@ Logical operators are used to return a boolean based on the boolean result of mu
 | &verbar;&verbar;       | Or               | 5 - 1 == 3 &verbar;&verbar; 10 % 2 == 0    | true
 | !        | Not              | !(5 - 1 == 4)                | false
 
-## Bitwise
+### Bitwise
 I doubt we'll need these operators for OOP, but for the sake of completion and to quench your thirst for knowledge I will still add these to the guide. Bitwise operators work just like they do in Computer Organisation / Reasoning and Logic:
 
 | Operator | Name | Example        | R & L Equivalence | Result (Decimal) | Result (Binary) |
@@ -172,7 +178,7 @@ I doubt we'll need these operators for OOP, but for the sake of completion and t
 | >>       | Shift right | 60 >> 2          | NaN | 15 | 1111
 | >>>      | Shift right zero | 60 >>> 2 | NaN | 15 | 0000 1111
 
-## Assignment
+### Assignment
 These operators are used to assign values to variables.
 
 | Operator | Example  | Equivalent to | 
@@ -189,7 +195,7 @@ These operators are used to assign values to variables.
 | ^=       | A ^= B   | A = A ^ B  
 | &verbar;=       | A &verbar;= B   | A = A &verbar; B 
 
-## Miscellaneous
+### Miscellaneous
 There are two useful operators outside of those categories.
 
 **? (Conditional Operator):** A conditional operator is used to evaluate a boolean value and decide what value should be there based on the boolean. You could see this as a shorter if-statement. For example:
@@ -223,6 +229,310 @@ isString("string");
 // This will return false:
 isString(new Integer(5));
 ```
+
+## Control statements
+***
+The statements in your source code are normally executed from top to bottom. However, control statements allow you to break up the flow execution. This allows for far more complex functionality.
+
+### Conditional Execution
+As the name suggest, these statements allow for code to be executed if a certain condition is met.
+
+**If statement:** This is the most basic conditional statement. An if statement evaluates some expression, and executes some code if the expression was true. Example:
+```java
+if (A == B)
+{
+    System.out.println("A is equal to B!");
+}
+```
+![ifelse-flowchart-365x300](https://user-images.githubusercontent.com/41565823/46495943-0ba58500-c817-11e8-8f9c-3222474c94fe.png)
+
+**if ... else statement:** This is a normal if statement, with a small twist: if the expression in the if statement was false, the code in the else block will be executed. If the expression was true, this expression behaves just like a normal if statement would. Example:
+```java
+if (A == B)
+{
+    System.out.println("A is equal to B!");
+} else
+{
+    System.out.println("A is NOT equal to B!");
+}
+```
+You can also combine an else with an if to create an *else if* block. In this case you can check several expressions before you jump to an else block. Example:
+```java
+if (A == B)
+{
+    System.out.println("A is equal to B!");
+} else if (A < B)
+{
+    System.out.println("A is less than B!");
+} else
+{
+    System.out.println("A is greater than B!");
+}
+```
+
+**Nested if statements:** You can use the above statements inside other (else) if blocks:
+```java
+if (A != B)
+{
+    if (A < B)
+    {
+        System.out.println("A is less than B!");
+    } else
+    {
+        System.out.println("A is greater than B!");
+    }
+} else
+{
+    System.out.println("A is equal to B!");
+}
+```
+
+**Switch statements:** Moving on, we have switch statements. The switch statement defines multiple paths for execution of a set of statements. It is a better alternative than using a large set of if-else statements as it is a multi-way branch statement.
+
+Refer to the following flowchart to get a better understanding of switch statements:
+![switchstatement-java-271x300](https://user-images.githubusercontent.com/41565823/46496005-32fc5200-c817-11e8-81c2-5c0640f11103.png)
+
+A switch statement compares the given variable to a list of possible values. You can also define a default value, which will trigger if the given value is not equal to any of the values in your list. An example would be:
+
+```java
+private String getDay(int dayInWeek)
+{
+    String currentDay = "";
+    
+    switch (dayInWeek)
+    { 
+        case 1:
+            currentDay = "Monday";
+            break;
+        case 2:
+            currentDay = "Tuesday";
+            break;
+        case 3:
+            currentDay = "Wednesday";
+            break;
+        case 4:
+            currentDay = "Thursday";
+            break;
+        case 5:
+            currentDay = "Friday";
+            break;
+        case 6:
+            currentDay = "Saturday";
+            break;
+        case 7:
+            currentDay = "Sunday";
+            break;
+        default:
+            currentDay = "Invalid day";
+            break;
+    }
+    
+    return currentDay;
+}   
+
+System.out.println("Today is " + getDay(1)); // Result: "Today is Monday"
+System.out.println("Today is " + getDay(7)); // Result: "Today is Sunday"
+System.out.println("Today is " + getDay(-1)); // Result: "Today is Invalid day"
+```
+
+**Conditional operator:** I talked about this [earlier](#miscellaneous), but the conditional operator can be used in place of if statements in some cases.
+
+### Loops
+<img src="https://i.kym-cdn.com/photos/images/original/001/393/650/27f.jpg"  width="120" height="124" title="No lööps">
+
+*Not these loops*
+
+Loops can execute code multiple times. So instead if writing a certain statement 5 times, you can use one nice loop. There are a few different types of loops.
+
+**While loop:** These loops repeat a certain block of code, *while* the expression is true. Before each execution the statement will be checked; if the expression is true the loop will execute, otherwise it will break and continue normal execution. As with any other loops inifite loops are something you have to watch out for, but while loops have a higher 'infinite loop potential' than other loops. Example: 
+```java
+int i = 0;
+
+while (i < 5)
+{
+    System.out.println("Hi.");
+    i++; // This line is important, without it this loop would become infinite!
+}
+```
+
+**Do..while loop:** This loop is the same as a while loop with one big difference: Instead of checking the loop expression before execution, this loop will check the expression *after* execution.
+
+**For loop:** A for loop is a compact method for iterating over a range of values. The standard form is:
+```java
+for (initialization of variable; continuation case; increment)
+{
+    // code goes here
+}
+```
+The first part is where you initialize a variable to be looped upon. The continuation case is an expression which must be true in order for the code to be executed. Increment is where you increment your initialized variable towards the termination. An example:
+```java
+for (int i = 0; i < 5; i++)
+{
+    System.out.println("Hi, for the " + i + "th time!");
+}
+
+// This will print "Hi, for the xst time!" 5 times
+// Much better than:
+System.out.println("Hi, for the 0th time!");
+System.out.println("Hi, for the 1th time!");
+System.out.println("Hi, for the 2th time!");
+System.out.println("Hi, for the 3th time!");
+System.out.println("Hi, for the 4th time!");
+``` 
+*Notice how I used 'i' instead of some descriptive name as I [recommended earlier](#naming-conventions). A quick answer can be found [here](https://softwareengineering.stackexchange.com/questions/86904/why-do-most-of-us-use-i-as-a-loop-counter-variable)*
+
+**Enhanced for loop:** A few years ago (Java 5) the enhanced for loop was added. This loop is very useful for iterating over a collection of elements such as arrays, lists, and sets. The syntax is simple:
+```java
+for (initialization of variable : iterable)
+{
+    // code goes here
+}
+```
+Like in the regular for loop, initialization of variable is simply a variable that can be used inside the loop. It may sound more difficult than it actually is:
+```java
+int[] numbers = new int[]{1, 3, 3, 7};
+
+for (int i : numbers)
+{
+    System.out.println("Current number: " + i);
+}
+
+/*
+This would print:
+Current number: 1
+Current number: 3
+Current number: 3
+Current number: 7
+*/
+```
+
+### Flow control
+Flow control statements allow you to specifically control the flow of execution of certain code. In places where code could potentially cause issues if run under certain conditions, these statements are particulary helpful and sometimes even necessary.
+
+**Return statements:** The return statement has a few different purposes.
+In a **void** method (a method with the modifier **void**/does not return a value), this statement can be used to simply exit the method. For example:
+```java
+private void runLoop()
+{
+    while (true)
+    {
+        if (!shouldBeLooping())
+        {
+            return;
+        }
+        
+        // do something
+    }
+}
+```
+Any value that is not declared **void** has to return something, like this:
+```java
+private boolean shouldBeLooping()
+{
+    return running == null ? false : true;
+}
+```
+
+**Continue statement:** This statement can be used within the body of a loop to skip execution of the following code and move to the next loop iteration. Example:
+```java
+for (int i = 0; i < 5; i++)
+{
+    if (i == 2)
+    {
+        continue; // If i == 2, then skip to the next iteration
+    }
+    
+    System.out.println(i);
+}
+
+/*
+The result would be:
+0
+1
+3
+4
+*/
+```
+
+**Break statement:** This statement can be used to immediately exit out of a loop. Example:
+```java
+for (int i = 0; i < 5; i++)
+{
+    if (i == 3)
+    {
+        break; // If i == 3, then break out of loop
+    }
+    
+    System.out.println(i);
+}
+
+/*
+The result would be:
+0
+1
+2
+*/
+```
+
+## Objects
+***
+*Work in progress*
+*This is just a baseline, not sure if all these things will be added. If you want a certain topic explained/discussed, you can create an issue on github or send a message on [discord](https://discord.gg/DxH42Ca).*
+### Instantiation
+
+### Instance Variables vs Class Variables
+
+### Inheritance
+
+### Abstraction
+
+### Interface
+
+## I/O
+***
+*Work in progress*
+*This is just a baseline, not sure if all these things will be added. If you want a certain topic explained/discussed, you can create an issue on github or send a message on [discord](https://discord.gg/DxH42Ca).*
+### Files
+
+### Console
+
+## Tests
+***
+*Work in progress*
+*This is just a baseline, not sure if all these things will be added. If you want a certain topic explained/discussed, you can create an issue on github or send a message on [discord](https://discord.gg/DxH42Ca).*
+
+## Running everything
+***
+*Work in progress*
+*This is just a baseline, not sure if all these things will be added. If you want a certain topic explained/discussed, you can create an issue on github or send a message on [discord](https://discord.gg/DxH42Ca).*
+
+## Helpful links and credits
+***
+*Work in progess*
+
+### Links
+You can find some links here, which may be of use to use to you.
+#### Codecademy
+Codecademy is a website that teaches you to code in an interactive way (for free!)
+* [codecademy](https://www.codecademy.com/learn/learn-java)
+
+#### thenewboston
+thenewboston is a youtube channel that has many great programming and science-related tutorials
+* [thenewboston - beginner](https://m.youtube.com/playlist?list=PLFE2CE09D83EE3E28)
+* [thenewboston - intermediate](https://m.youtube.com/playlist?list=PL27BCE863B6A864E3)
+* [thenewboston - java game development](https://m.youtube.com/playlist?list=PLA331A6709F40B79D)
+
+### Credits
+Since we've signed the Code of Honour I might as well add this too:
+* [stackoverflow (several links throughout the guide)](https://www.stackoverflow.com)
+* [tutorialspoint - java (tables + definitions)](https://www.tutorialspoint.com/java)
+* [SpigotMC (structure + tables + definitions + information)](https://www.spigotmc.org/wiki/spigot-plugin-development/)
+
+
+
+
+
+
 
 # WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP - WIP
 ***
