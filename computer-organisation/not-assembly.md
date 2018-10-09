@@ -196,5 +196,5 @@ examples:
 
 https://www.ceafinney.com/miscellania/bases.html
 
-*[Multiplexers and Decoders](https://www.youtube.com/watch?v=HU31Wh-4_K8)
+* [Multiplexers and Decoders](https://www.youtube.com/watch?v=HU31Wh-4_K8)
 
