@@ -3,8 +3,7 @@ FAQ For Reasoning and Logic
 ## Table of contents
 1. [Disjunctive Normal Form](disjunctive-normal-form)
 2. [De Morgan's Law](de-morgans-law)
-
-
+3. [Arguments](arguments)
 
 ## Disjunctive Normal Form
 Disjunctive Normal Form or DNF for short is the disjunction of conjunctions of literals. Every formula has an equivalent in DNF.
@@ -52,11 +51,11 @@ If an argument has no premesis, the conclusion must be a tautology (i.e. always 
 
 Principal of explosion: if one of the premesis is a contradiction (i.e. always false), the argument is always valid. Look at the definition of a valid argument. The conclusion has to be true for all cases where all propositions are true. If there are no cases where the propositions are true, this definition technically holds. It won't win you a debate, but the argument is logically valid.
 
-
 ## Sources
+*  Hugtenburg, S. & Yorke-Smith, N. (2018) Delftse Foundations of Computation. Available for download [here](https://textbooks.open.tudelft.nl/index.php/textbooks/catalog/book/13)
 * [DNF](http://www.barrywatson.se/cl/cl_dnf.html)
+
 
 ## Useful Links
 * [Logical Equivalence](https://en.wikipedia.org/wiki/Logical_equivalence)
-
 * [Recursion](https://en.wikipedia.org/wiki/Recursion#In_mathematics)
