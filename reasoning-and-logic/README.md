@@ -46,7 +46,7 @@ An argument is valid if and only if the conclusion is true for all cases (i.e. r
 
 For predicate logic, this process is more difficult. You need to use a mathematical proof. I can't explain all mathematical proofs here, because they are different for every argument. Look at the text book, that explains it pretty well.
 
-Special cases
+### Special cases
 
 If an argument has no premesis, the conclusion must be a tautology (i.e. always true) for the argument to be valid. A example of a tautology is (p or not p).
 
