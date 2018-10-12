@@ -9,7 +9,7 @@ FAQ For Computer Organisation
 	3. [Divisible bases](#divisible-bases)
 
 2. [Number representations](#number-representations)
-	1. [Sign and magnitude](#sign-and-magnitude)
+	1. [Binary coded decimal (BCD)](#binary-coded-decimal-bcd)
 	2. [Sign and magnitude](#sign-and-magnitude)
 	3. [1s complement](#1s-complement)
 	4. [2s complement](#1s-complement)
