@@ -10,11 +10,12 @@ FAQ For Computer Organisation
 
 2. [Number representations](#number-representations)
 	1. [Sign and magnitude](#sign-and-magnitude)
-	2. [1s complement](#1s-complement)
-	3. [2s complement](#1s-complement)
-	4. [Excess-n](#excess-n)
-	5. [Fixed point](#fixed-point)
-	6. [Floating point (single precision)](#floating-point)
+	2. [Sign and magnitude](#sign-and-magnitude)
+	3. [1s complement](#1s-complement)
+	4. [2s complement](#1s-complement)
+	5. [Excess-n](#excess-n)
+	6. [Fixed point](#fixed-point)
+	7. [Floating point (single precision)](#floating-point)
 
 3. [Helpful links](#helpful-links)
 
@@ -120,9 +121,13 @@ therefore 1BADB002 in hexadecimal is 0123223123000002 in quaternary
 
 ## Number Representations
 
+### Binary coded decimal (BCD)
+
+BCD is the most understandable way to represent a decimal number in binary. Every digit in the decimal number will be represented by 4 bits (**b**inary dig**its**). The decimal digit 0 will be represented as 0000, 1 as 0001, 2 as 0010 ... and 9 as 1001. The number 2490 will be represented as: 0010 0100 1001 0000. This system isn't very efficient, but it is easy to understand for humans.
+
 ### Sign and Magnitude
 
-To represent negative binary numbers a number of systems can be used. sign and magnitude is one.
+To represent negative binary numbers a number of systems can be used. Sign and magnitude is one.
 
 With sign and magnitude, the most significant bit of any binary number specifies the sign of the number. if it's 1 then the number is negative, else positive.
 
