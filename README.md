@@ -11,6 +11,10 @@ FAQ on everything from CSE delft year 1
 - [Object Oriented Programming](object-oriented-programming/BasicsToJava.md)
 - [Reasoning and Logic](reasoning-and-logic/README.md)
 
+### Term 2
+
+- [Web & Database Technology](web-and-database-technology/README.md)
+
 ## Other summaries
 
 Other summaries created by students:
