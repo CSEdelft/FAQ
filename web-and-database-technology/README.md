@@ -2,9 +2,10 @@
 
 FAQ For Web & Database Technology
 
-## Table of contents
+## Content
 
-[Usefull links](#usefull-links)
+This course is split into two parts. [web](./web.md) and [database](./database.md).
+Check them out to learn more about that section.
 
 ## Usefull links
 
