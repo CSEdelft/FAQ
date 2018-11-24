@@ -1,5 +1,11 @@
+# Quick video tutorial
 
+If you've got 30 minutes of time, these two videos will teach you how to work with git in the command line so that you can quickly start collaborating on github using git. Git and github will make more sense after this, promised. 
 
+1. Git and Source Control Basics
+			https://www.youtube.com/watch?v=0fKg7e37bQE
+2. Pull requests, Branching, Merging & Team Workflow
+			https://www.youtube.com/watch?v=oFYyTZwMyAg
 
 # essential git commands
 
