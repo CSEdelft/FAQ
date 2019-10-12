@@ -1,5 +1,7 @@
 # FAQ
 
+> This repo is pretty outdated, for up to date content go to [CSHub](https://cshub.nl/)
+
 FAQ on everything from CSE delft year 1
 
 ## Courses
